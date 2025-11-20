@@ -108,7 +108,7 @@ class BirthdayCake {
         this.launchConfetti();
         setTimeout(() => {
             this.showMessage("С ДНЁМ РОЖДЕНИЯ! 🎂 Ты самый лучший!");
-        }, 2000);
+        }, 3000);
     }
 
     launchConfetti() {
