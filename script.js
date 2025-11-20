@@ -4,11 +4,11 @@ class BirthdayCake {
     constructor() {
         this.candleCount = 5;
         this.messages = [
-            "Ты делаешь мир ярче! 🌟",
-            "Спасибо за все твои улыбки! 😊",
-            "Ты - самый удивительный человек! 💫",
-            "Пусть все мечты сбудутся! 🌈",
-            "Ты заслуживаешь всего самого лучшего! 🎉"
+            "Пусть твой код компилируется с первой попытки, а шахматные партии заканчиваются матом в 3 хода!",
+            "Твоя доброта и забота для меня - как самый теплый летний день у моря, который согревает даже в самую холодную погоду! ",
+            "С нашего знакомства ты вошел в мою жизнь как самый красивый баг, который я никогда не хочу фиксить!",
+            "Я всегда буду твоим самым преданным помощником и поддержкой в любых начинаниях! ",
+            "Желаю, чтобы в твоей жизни было меньше багов, чем в идеально написанной функции! "
         ];
         this.blownCandles = 0;
         this.init();
@@ -140,9 +140,14 @@ class BirthdayCake {
 // Класс для музыки
 class BirthdayMusic {
     constructor() {
-        this.songs ='song.mp3'
+        this.songs = [
+            'song.mp3'
+        ];
+        this.currentSong = 0;
         this.audio = new Audio();
         this.isPlaying = false;
+        this.leftGif = document.getElementById('leftGif');
+        this.rightGif = document.getElementById('rightGif');
         this.setupMusicButton();
     }
 
@@ -154,15 +159,30 @@ class BirthdayMusic {
     toggleMusic() {
         if (this.isPlaying) {
             this.audio.pause();
+            this.hideGifs();
             document.getElementById('music-toggle').textContent = '🎵 Включить музыку';
         } else {
-            this.audio.src = this.songs;
+            this.audio.src = this.songs[this.currentSong];
             this.audio.play().catch(e => {
                 console.log('Нужно взаимодействие пользователя для воспроизведения музыки');
             });
+            this.showGifs();
             document.getElementById('music-toggle').textContent = '🔇 Выключить музыку';
         }
         this.isPlaying = !this.isPlaying;
+    }
+
+    showGifs() {
+        // Показываем гифки с небольшой задержкой для драматического эффекта
+        setTimeout(() => {
+            this.leftGif.classList.add('show');
+            this.rightGif.classList.add('show');
+        }, 300);
+    }
+
+    hideGifs() {
+        this.leftGif.classList.remove('show');
+        this.rightGif.classList.remove('show');
     }
 }
 
